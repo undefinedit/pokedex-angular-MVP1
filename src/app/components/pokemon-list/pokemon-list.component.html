@@ -1,0 +1,37 @@
+<div class="header-logo">
+    <img src="/assets/inicie-logo.png" alt="">
+</div>
+
+<div class="header-images">
+    <div>
+        <img src="/assets/pokemon-card-1.png" alt="">
+    </div>
+    <div>
+        <img src="/assets/pokemon-card-2.png" alt="">
+    </div>
+    <div>
+        <img src="/assets/pokemon-card-3.png" alt="">
+    </div>
+</div>
+
+<div>
+    <h2 class="pokemon-title">
+        Explore o mundo dos Pokémons 
+    </h2>
+    <p class="pokemon-subtitle">Descubra todas as espécies de Pokémons</p>
+    <div class="search-pokemon">
+        <input class="search-input" type="text" name="buscar" id="buscar">
+        <button class="search-button">Buscar</button>
+    </div>
+</div>
+
+
+<div class="pokedex-title">
+    <h3>Pokédex</h3>
+</div>
+
+<div class="pokemon-grid">
+    <app-pokemon-card *ngFor="let pokemon of pokemons" [pokemon]="pokemon">
+
+    </app-pokemon-card>
+</div>
