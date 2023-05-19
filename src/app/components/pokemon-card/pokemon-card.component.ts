@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pokemon } from 'src/app/models/pokemon.model';
-import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-card',
@@ -10,26 +9,18 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonCardComponent implements OnInit{
   @Input()
+  pokemon!: any;
   pokemons: any;
-  pokemon!: Pokemon;
-  constructor(private router: Router, private pokemonService: PokemonService) {
-    this.pokemon = this.pokemons;
+  constructor(private router: Router) {
+  }
+
+
+  ngOnInit(): void {
+    console.log(this.pokemons);
   }
 
   openPokemonDetails(){
     this.router.navigateByUrl('/pokemon-details');
   }
-
-  ngOnInit() {
-    debugger
-    this.getPokemonsData(20); // Obtém os dados do Pokémon com ID 1 (Bulbasaur), por exemplo
-  }
-
-  getPokemonsData(limit: number) {
-    this.pokemonService.getPokemons(limit)
-      .subscribe((data: any) => {
-        this.pokemons = data.results;
-      });
-  }
-
+    
 }

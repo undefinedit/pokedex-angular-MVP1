@@ -6,7 +6,7 @@
     
         <div class="header-title">
             <h2 class="pokemon-name">
-                Charmeleon
+               {{pokemon.name}}
             </h2>
         </div>
         <div class="main-head">
@@ -15,7 +15,7 @@
                     Cod:
                 </h2>
                 <p class="pokemon-cod">
-                    #0034
+                    #{{pokemon.id}}
                 </p>
             </div>
             
@@ -24,7 +24,7 @@
                     Tipo:
                 </h2>
                 <div class="pokemon-type">
-                    <p>Fogo</p>
+                    <p>{{pokemon.types[0].type.name}}</p>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
         </div>
     
         <div class="pokemon-description">
-            <p>"Charmeleon destrói seus oponentes sem pena com suas garras afiadas. Torna-se agressivo quando encontra um oponente forte e então a chama na ponta da sua cauda queima intensamente em uma cor azulada."</p>
+            <p>{{pokemonDescription.flavor_text_entries[0].flavor_text}}</p>
         </div>
     
         <div>
@@ -52,8 +52,8 @@
                 <p>Peso:</p>
             </div>
             <div class="pokemon-values">
-                <b>1.10cm</b>
-                <p>30kg</p>
+                <b>{{pokemon.height}}cm</b>
+                <p>{{pokemon.weight}}kg</p>
             </div>
         </div>
     
@@ -82,6 +82,6 @@
         </div>
     </div>
     <div class="pokemon-image">
-        <img src="/assets/example-logo.png" >
+        <img class="image-fit" [src]=pokemon.sprites.other.dream_world.front_default >
     </div>
 </div>
