@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pokemon } from 'src/app/models/pokemon.model';
 
 @Component({
@@ -9,5 +10,9 @@ import { Pokemon } from 'src/app/models/pokemon.model';
 export class PokemonCardComponent {
   @Input()
   pokemon!: Pokemon;
+  constructor(private router: Router) {}
 
+  openPokemonDetails(){
+    this.router.navigateByUrl('/pokemon-details');
+  }
 }
