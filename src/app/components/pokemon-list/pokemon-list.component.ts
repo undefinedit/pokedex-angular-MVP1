@@ -13,8 +13,10 @@ export class PokemonListComponent implements OnInit {
   pokemonsURL: string[] = [];
   pokemon: any;
   pokemonList: any[]=[];
+
+  currentPage = 1;
+  limit = 10;
   constructor(private pokemonService: PokemonService, private router: Router) {
-    //this.pokemon = this.pokemons;
   }
 
   openPokemonDetails(pokemon: any){
@@ -24,22 +26,51 @@ export class PokemonListComponent implements OnInit {
   }
 
   ngOnInit() {
-    for (let index = 1; index < 11; index++) {
-      this.getPokemonDetails(index); 
-    }
+    this.fetchPokemonPage()
   }
 
-  getPokemonDetails(id: number) {
-    this.pokemonService.getPokemon(id)
+  fetchPokemonPage() {
+    debugger
+    this.pokemonService.getPokemonPage(this.currentPage, this.limit)
       .subscribe(
         (data: any) => {
-          this.pokemon = data;
-         console.log( this.pokemon );
-            this.pokemonList.push(this.pokemon)
+          debugger
+          let pokeUrls = data.results;
+          for (let index = 0; index < pokeUrls.length; index++) {
+            this.getPokemons(pokeUrls[index].url) 
+          }      
         },
-        (error: any) => {
-          console.error(error);
+        error => {
+          console.log('Error:', error);
         }
       );
   }
+
+  nextPage() {
+    this.pokemonList = [];
+    this.currentPage++;
+    this.fetchPokemonPage();
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.pokemonList = [];
+      this.currentPage--;
+      this.fetchPokemonPage();
+    }
+  }
+
+  getPokemons(url: string) {
+    this.pokemonService.getPokemons(url)
+      .subscribe(
+        (data: any) => {
+          this.pokemonList.push(data)
+          console.log( this.pokemonList); // or update a variable to store the details
+        },
+        error => {
+          console.log('Error:', error);
+        }
+      );
+  }
+
 }

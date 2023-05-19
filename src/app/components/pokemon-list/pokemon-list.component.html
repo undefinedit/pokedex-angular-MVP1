@@ -31,7 +31,12 @@
 
 <div class="pokedex-title">
     <h3>Pokédex</h3>
+    <div>
+        <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+        <button (click)="nextPage()">Next</button>
+    </div>
 </div>
+
 
 <div class="pokemon-grid">
     <!-- <app-pokemon-card  [pokemon]="pokemonsList">
@@ -46,7 +51,7 @@
         </div>
 
         <div class="pokemon-image">
-            <img class="image-fit" [src]=pokemon.sprites.other.dream_world.front_default >
+            <img class="image-fit" [src]=pokemon.sprites.other.dream_world.front_default>
         </div>
 
         <div class="pokemon-footer-card">
