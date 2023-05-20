@@ -9,10 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./pokemon-list.component.css']
 })
 export class PokemonListComponent implements OnInit {
-  pokemons = pokemons;
   pokemonsURL: string[] = [];
   pokemon: any;
-  pokemonList: any[]=[];
+  pokemonList: any[] = [];
 
   currentPage = 1;
   limit = 10;
@@ -30,11 +29,9 @@ export class PokemonListComponent implements OnInit {
   }
 
   fetchPokemonPage() {
-    debugger
     this.pokemonService.getPokemonPage(this.currentPage, this.limit)
       .subscribe(
         (data: any) => {
-          debugger
           let pokeUrls = data.results;
           for (let index = 0; index < pokeUrls.length; index++) {
             this.getPokemons(pokeUrls[index].url) 
@@ -65,7 +62,7 @@ export class PokemonListComponent implements OnInit {
       .subscribe(
         (data: any) => {
           this.pokemonList.push(data)
-          console.log( this.pokemonList); // or update a variable to store the details
+          console.log( this.pokemonList); 
         },
         error => {
           console.log('Error:', error);

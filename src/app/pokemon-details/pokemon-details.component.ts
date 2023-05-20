@@ -10,18 +10,27 @@ import { PokemonService } from '../services/pokemon.service';
 export class PokemonDetailsComponent implements OnInit {
   pokemon: any;
   pokemonDescription: any;
-
-  constructor(private route: ActivatedRoute, private pokemonService: PokemonService) {}
+  valor: number = 0; 
+  constructor(private route: ActivatedRoute, private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
     let pokemonObject = localStorage.getItem('pokemon');
 
-    if(pokemonObject != null){
+    if (pokemonObject != null) {
       this.pokemon = JSON.parse(pokemonObject);
-    }else{
+    } else {
       this.pokemon = []
-    }  
-      this.getPokemonDescription(this.pokemon.id)
+    }
+    
+    this.getPokemonDescription(this.pokemon.id)
+    this.atualizarValor(this.pokemon.stats[2].base_stat)
+    this.atualizarValor(this.pokemon.stats[5].base_stat)
+    this.atualizarValor(this.pokemon.stats[0].base_stat)
+    this.atualizarValor(this.pokemon.stats[1].base_stat)
+  }
+
+  atualizarValor(novoValor: number) {
+    this.valor = novoValor;
   }
 
   getPokemonDescription(id: number) {
@@ -29,13 +38,19 @@ export class PokemonDetailsComponent implements OnInit {
       .subscribe(
         (data: any) => {
           this.pokemonDescription = data;
-          console.log(this.pokemonDescription);
-    
         },
         (error: any) => {
           console.error(error);
         }
       );
+  }
+
+  getPokemonTypeClass(type: string): string {
+    return type.toLowerCase();
+  }
+
+  getPokemonAttributeClass(type: string): string {
+    return type.toLowerCase();
   }
 
 }

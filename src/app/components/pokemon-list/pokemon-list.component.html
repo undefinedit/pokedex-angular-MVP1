@@ -30,24 +30,21 @@
 </div>
 
 <div class="pokedex-title">
-    <h3>Pokédex</h3>
+    <h3 class="pokedex-subtitle">Pokédex</h3>
     <div>
-        <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
-        <button (click)="nextPage()">Next</button>
+        <button class="round-button-right" (click)="previousPage()" [disabled]="currentPage === 1"></button>
+        <button  class="round-button-left" (click)="nextPage()"></button>
     </div>
 </div>
 
 
 <div class="pokemon-grid">
-    <!-- <app-pokemon-card  [pokemon]="pokemonsList">
-        
-    </app-pokemon-card> -->
 
     <div *ngFor="let pokemon of pokemonList" class="pokemon-card" (click)="openPokemonDetails(pokemon)">
 
         <div class="header-card">
             <b class="pokemon-name">{{pokemon.name}}</b>
-            <p class="pokemon-cod">#COD</p>
+            <p class="pokemon-cod">#{{pokemon.id}}</p>
         </div>
 
         <div class="pokemon-image">
@@ -64,8 +61,5 @@
                 <p>{{pokemon.weight}}kg</p>
             </div>
         </div>
-
-
-
     </div>
 </div>

@@ -23,7 +23,7 @@
                 <h2 class="pokemon-subtitle-type">
                     Tipo:
                 </h2>
-                <div class="pokemon-type">
+                <div class="pokemon-type" [ngClass]="getPokemonTypeClass(pokemon.types[0].type.name)">
                     <p>{{pokemon.types[0].type.name}}</p>
                 </div>
             </div>
@@ -59,25 +59,25 @@
     
         <div class="pokemon-attribute">
             <p class="pokemon-title-attribute">Vida:</p>
-            <div class="box-color"> 
+            <div [style.width.%]="valor" [ngClass]="getPokemonAttributeClass(pokemon.stats[0].stat.name)"> 
             </div>
         </div>
     
         <div class="pokemon-attribute">
             <p class="pokemon-title-attribute">Defesa:</p>
-            <div class="box-color"> 
+            <div [style.width.%]="valor" [ngClass]="getPokemonAttributeClass(pokemon.stats[2].stat.name)"> 
             </div>
         </div>
     
         <div class="pokemon-attribute">
             <p class="pokemon-title-attribute">Velocidade:</p>
-            <div class="box-color"> 
+            <div  [style.width.%]="valor" [ngClass]="getPokemonAttributeClass(pokemon.stats[5].stat.name)"> 
             </div>
         </div>
     
         <div class="pokemon-attribute">
             <p class="pokemon-title-attribute">Ataque:</p>
-            <div class="box-color"> 
+            <div [style.width.%]="valor" [ngClass]="getPokemonAttributeClass(pokemon.stats[1].stat.name)"> 
             </div>
         </div>
     </div>
