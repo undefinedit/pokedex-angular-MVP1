@@ -138,6 +138,7 @@
     border-radius: 5px 0px 0px 5px;
     height: 2.75rem;
     width: 13.6rem;
+    padding: 1rem;
 
     @media (min-width: 1200px) {
         height: 2.75rem;
