@@ -11,23 +11,24 @@
         </h2>
         <p class="pokemon-subtitle">Descubra todas as espécies de Pokémons</p>
         <div class="search-pokemon">
-            <input class="search-input" type="text" name="buscar" id="buscar">
-            <button class="search-button">Buscar</button>
+            <input class="search-input" type="text" name="buscar" id="buscar" [(ngModel)]="pokemonName" (input)="resetList()">
+            <button class="search-button" (click)="searchPokemon()">Buscar</button>
         </div>
     </div>
 
     <div class="header-images">
         <div>
-            <img src="/assets/pokemon-card-1.png">
+            <img  class="first-responsive-image" src="/assets/pokemon-card-1.png">
         </div>
         <div class="pokemon-card-below">
-            <img src="/assets/pokemon-card-2.png">
+            <img class="second-responsive-image" src="/assets/pokemon-card-2.png">
         </div>
         <div>
-            <img src="/assets/pokemon-card-3.png">
+            <img class="third-responsive-image" src="/assets/pokemon-card-3.png">
         </div>
     </div>
 </div>
+
 
 <div class="pokedex-title">
     <h3 class="pokedex-subtitle">Pokédex</h3>

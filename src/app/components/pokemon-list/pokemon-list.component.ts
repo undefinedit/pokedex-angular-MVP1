@@ -1,5 +1,4 @@
 import { Component, OnInit} from '@angular/core';
-import { pokemons } from '../../pokemons';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { Router } from '@angular/router';
 
@@ -12,11 +11,10 @@ export class PokemonListComponent implements OnInit {
   pokemonsURL: string[] = [];
   pokemon: any;
   pokemonList: any[] = [];
-
+  pokemonName: string = "";
   currentPage = 1;
   limit = 10;
-  constructor(private pokemonService: PokemonService, private router: Router) {
-  }
+  constructor(private pokemonService: PokemonService, private router: Router) {}
 
   openPokemonDetails(pokemon: any){
      this.router.navigateByUrl('/pokemon-details');
@@ -62,12 +60,27 @@ export class PokemonListComponent implements OnInit {
       .subscribe(
         (data: any) => {
           this.pokemonList.push(data)
-          console.log( this.pokemonList); 
         },
         error => {
           console.log('Error:', error);
         }
       );
+  }
+
+  searchPokemon(){
+    let filteredPokemons = this.pokemonList.filter(f => f.name.toLowerCase().startsWith(this.pokemonName.toLocaleLowerCase()));
+
+    if(filteredPokemons.length > 0){
+      this.pokemonList = filteredPokemons;
+    }
+  }
+
+  resetList(){
+    if(this.pokemonName === ""){
+      this.pokemonList = [];
+      this.currentPage;
+      this.fetchPokemonPage();
+    }
   }
 
 }

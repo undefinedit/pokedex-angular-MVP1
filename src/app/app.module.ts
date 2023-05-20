@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
 import { PokemonDetailsComponent } from './components/pokemon-list/pokemon-details/pokemon-details.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { PokemonDetailsComponent } from './components/pokemon-list/pokemon-detai
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
   ],
