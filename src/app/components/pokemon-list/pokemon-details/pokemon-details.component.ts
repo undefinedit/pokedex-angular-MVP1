@@ -14,6 +14,7 @@ export class PokemonDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
+    
     let pokemonObject = localStorage.getItem('pokemon');
 
     if (pokemonObject != null) {
@@ -23,15 +24,8 @@ export class PokemonDetailsComponent implements OnInit {
     }
     
     this.getPokemonDescription(this.pokemon.id)
-    this.atualizarValor(this.pokemon.stats[2].base_stat)
-    this.atualizarValor(this.pokemon.stats[5].base_stat)
-    this.atualizarValor(this.pokemon.stats[0].base_stat)
-    this.atualizarValor(this.pokemon.stats[1].base_stat)
   }
 
-  atualizarValor(novoValor: number) {
-    this.valor = novoValor;
-  }
 
   getPokemonDescription(id: number) {
     this.pokemonService.getPokemonDescription(id)
@@ -43,6 +37,18 @@ export class PokemonDetailsComponent implements OnInit {
           console.error(error);
         }
       );
+  }
+
+
+  heightMask(id: number): string {
+    var idString = id.toString();
+    var indice = 1;
+    if (idString.length == 1) {
+      var idComVirgula = `0,${idString}`;
+      return idComVirgula
+    }
+    var idComVirgula =  idString.slice(0, indice) + "," + idString.slice(indice);;
+    return idComVirgula
   }
 
   getPokemonTypeClass(type: string): string {

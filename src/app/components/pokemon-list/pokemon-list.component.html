@@ -45,11 +45,11 @@
 
         <div class="header-card">
             <b class="pokemon-name">{{pokemon.name}}</b>
-            <p class="pokemon-cod">#{{pokemon.id}}</p>
+            <p class="pokemon-cod">#0{{pokemon.id}}</p>
         </div>
 
         <div class="pokemon-image">
-            <img class="image-fit" [src]=pokemon.sprites.other.dream_world.front_default>
+            <img class="image-fit" [src]=pokemon.sprites.front_default>
         </div>
 
         <div class="pokemon-footer-card">
@@ -58,7 +58,7 @@
                 <p>Peso:</p>
             </div>
             <div class="pokemon-values">
-                <b>{{pokemon.height}}cm</b>
+                <b>{{ heightMask(pokemon.height) }}cm</b>
                 <p>{{pokemon.weight}}kg</p>
             </div>
         </div>

@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class PokemonListComponent implements OnInit {
   pokemonsURL: string[] = [];
-  pokemon: any;
   pokemonList: any[] = [];
   pokemonName: string = "";
   currentPage = 1;
@@ -55,11 +54,23 @@ export class PokemonListComponent implements OnInit {
     }
   }
 
+  heightMask(id: number): string {
+    var idString = id.toString();
+    var indice = 1;
+    if (idString.length == 1) {
+      var idComVirgula = `0,${idString}`;
+      return idComVirgula
+    }
+    var idComVirgula =  idString.slice(0, indice) + "," + idString.slice(indice);;
+    return idComVirgula
+  }
+
   getPokemons(url: string) {
     this.pokemonService.getPokemons(url)
       .subscribe(
         (data: any) => {
           this.pokemonList.push(data)
+          console.log(this.pokemonList)
         },
         error => {
           console.log('Error:', error);

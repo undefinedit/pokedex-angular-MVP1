@@ -177,6 +177,8 @@
     margin-bottom: 1rem;
 }
 
+
+
 .box-color {
     width:  12.6rem;
     height: 1.3rem;  
@@ -186,6 +188,7 @@
 
 .pokemon-title-attribute{
     margin-right: 3.8rem;
+    width: 5rem
 }
 
 .main-detail{
