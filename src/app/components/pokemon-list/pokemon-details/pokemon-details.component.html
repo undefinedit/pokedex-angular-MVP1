@@ -1,7 +1,9 @@
 <div class="main-detail">
     <div class="sub-details">
-        <div class="header-logo">
-            <img src="/assets/inicie-logo.png">
+        <div>
+            <div class="header-logo">
+                <img class="pokeballs-logo" src="/assets/pokeballs-logo.png">
+            </div>
         </div>
 
         <div class="header-title">
@@ -81,8 +83,8 @@
 
             <div class="pokemon-attribute">
                 <p class="pokemon-title-attribute">Velocidade:</p>
-                <div [style.width.%]="pokemon.stats[3].base_stat"
-                    [ngClass]="getPokemonAttributeClass(pokemon.stats[3].stat.name)">
+                <div [style.width.%]="pokemon.stats[5].base_stat"
+                    [ngClass]="getPokemonAttributeClass(pokemon.stats[5].stat.name)">
                 </div>
             </div>
         </div>

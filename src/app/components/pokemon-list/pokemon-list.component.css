@@ -57,12 +57,16 @@
 .header-logo {
     display: flex;
     justify-content: center;
-    padding: 0 10rem 0 6.5rem;
+    padding: 0 6rem 0 6.5rem;
 
     @media (min-width: 1200px) {
-        margin-left: 4.0rem;
+        margin: 2rem 0rem 2rem 7rem;
         width: 10px;
     }
+}
+
+.pokeballs-logo{
+    width: 12.5rem;
 }
 
 .header-images {

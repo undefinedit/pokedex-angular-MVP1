@@ -1,11 +1,16 @@
 .header-logo {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
+    padding: 0 6rem 0 6.5rem;
+
     @media (min-width: 1200px) {
-        display: flex;
-        justify-content: flex-start;
-        margin-left: 1.6rem;
-     }   
+        margin: 2rem 0rem 2rem 7rem;
+        width: 10px;
+    }
+}
+
+.pokeballs-logo{
+    width: 12.5rem;
 }
 
 .pokemon-name {
