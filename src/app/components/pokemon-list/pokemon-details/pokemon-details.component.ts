@@ -23,11 +23,12 @@ export class PokemonDetailsComponent implements OnInit {
       this.pokemon = []
     }
     
-    this.getPokemonDescription(this.pokemon.id)
+    // this.getPokemonDescription(this.pokemon.id)
   }
 
 
-  getPokemonDescription(id: number) {
+ /* 
+ getPokemonDescription(id: number) {
     this.pokemonService.getPokemonDescription(id)
       .subscribe(
         (data: any) => {
@@ -38,7 +39,7 @@ export class PokemonDetailsComponent implements OnInit {
         }
       );
   }
-
+*/
 
   heightMask(id: number): string {
     var idString = id.toString();

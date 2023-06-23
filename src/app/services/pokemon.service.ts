@@ -7,10 +7,8 @@ import { Observable, forkJoin, map } from 'rxjs';
 })
 export class PokemonService {
 
-  private apiUrl = 'https://pokeapi.co/api/v2';
-  private apiUrlPokemon = 'https://pokeapi.co/api/v2/pokemon';
-  //private apiUrlPokemon = 'https://pokeapi.co/api/v2/pokemon';
-  private pokemons = [];
+  private apiUrl = 'https://backend-pokeapi.azurewebsites.net';
+  private apiUrlPokemon = 'https://backend-pokeapi.azurewebsites.net/pokemon';
 
   constructor(private http: HttpClient) { }
 

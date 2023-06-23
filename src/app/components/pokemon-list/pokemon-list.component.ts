@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { Router } from '@angular/router';
 
@@ -13,12 +13,12 @@ export class PokemonListComponent implements OnInit {
   pokemonName: string = "";
   currentPage = 1;
   limit = 10;
-  constructor(private pokemonService: PokemonService, private router: Router) {}
+  constructor(private pokemonService: PokemonService, private router: Router) { }
 
-  openPokemonDetails(pokemon: any){
-     this.router.navigateByUrl('/pokemon-details');
-     const objetoString = JSON.stringify(pokemon);
-     localStorage.setItem('pokemon', objetoString);
+  openPokemonDetails(pokemon: any) {
+    this.router.navigateByUrl('/pokemon-details');
+    const objetoString = JSON.stringify(pokemon);
+    localStorage.setItem('pokemon', objetoString);
   }
 
   ngOnInit() {
@@ -31,8 +31,8 @@ export class PokemonListComponent implements OnInit {
         (data: any) => {
           let pokeUrls = data.results;
           for (let index = 0; index < pokeUrls.length; index++) {
-            this.getPokemons(pokeUrls[index].url) 
-          }      
+            this.getPokemons(pokeUrls[index].url)
+          }
         },
         error => {
           console.log('Error:', error);
@@ -41,9 +41,11 @@ export class PokemonListComponent implements OnInit {
   }
 
   nextPage() {
-    this.pokemonList = [];
-    this.currentPage++;
-    this.fetchPokemonPage();
+    if (this.currentPage < 2) {
+      this.pokemonList = [];
+      this.currentPage++;
+      this.fetchPokemonPage();
+    }
   }
 
   previousPage() {
@@ -61,7 +63,7 @@ export class PokemonListComponent implements OnInit {
       var idComVirgula = `0,${idString}`;
       return idComVirgula
     }
-    var idComVirgula =  idString.slice(0, indice) + "," + idString.slice(indice);;
+    var idComVirgula = idString.slice(0, indice) + "," + idString.slice(indice);;
     return idComVirgula
   }
 
@@ -78,16 +80,16 @@ export class PokemonListComponent implements OnInit {
       );
   }
 
-  searchPokemon(){
+  searchPokemon() {
     let filteredPokemons = this.pokemonList.filter(f => f.name.toLowerCase().startsWith(this.pokemonName.toLocaleLowerCase()));
 
-    if(filteredPokemons.length > 0){
+    if (filteredPokemons.length > 0) {
       this.pokemonList = filteredPokemons;
     }
   }
 
-  resetList(){
-    if(this.pokemonName === ""){
+  resetList() {
+    if (this.pokemonName === "") {
       this.pokemonList = [];
       this.currentPage;
       this.fetchPokemonPage();
